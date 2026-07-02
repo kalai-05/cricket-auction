@@ -1,1 +1,65 @@
-/* You can add global styles to this file, and also import other style files */
+// Global stylesheet entry point.
+// 1. `mat.theme()` establishes Angular Material's M3 CSS-variable scaffold.
+// 2. Our own tokens/themes partials then override those variables with the
+//    navy / gold / electric-blue "IPL mega auction" brand.
+@use '@angular/material' as mat;
+@use 'styles/tokens' as *;
+@use 'styles/glassmorphism' as *;
+@use 'styles/typography' as *;
+@use 'styles/themes' as *;
+
+html {
+  height: 100%;
+  @include mat.theme(
+    (
+      color: (
+        primary: mat.$blue-palette,
+        tertiary: mat.$yellow-palette,
+      ),
+      typography: Roboto,
+      density: 0,
+    )
+  );
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: radial-gradient(
+    circle at top,
+    var(--app-navy-800) 0%,
+    var(--app-navy-950) 70%
+  );
+  color: var(--mat-sys-on-surface);
+  font: var(--mat-sys-body-medium);
+  margin: 0;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+// Thin, glass-friendly scrollbars for the projector-facing screens.
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--app-navy-500);
+  border-radius: var(--app-radius-pill);
+}
