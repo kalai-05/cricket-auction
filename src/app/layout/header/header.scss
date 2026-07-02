@@ -1,0 +1,66 @@
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: var(--app-z-header);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--app-space-3) var(--app-space-5);
+  background: rgba(10, 14, 39, 0.85);
+  backdrop-filter: blur(var(--app-glass-blur));
+  border-bottom: 1px solid var(--app-glass-border);
+
+  &__left,
+  &__right {
+    display: flex;
+    align-items: center;
+    gap: var(--app-space-2);
+  }
+
+  &__brand {
+    display: flex;
+    align-items: center;
+    gap: var(--app-space-2);
+    text-decoration: none;
+    margin-left: var(--app-space-2);
+  }
+
+  &__brand-icon {
+    color: var(--app-gold-400);
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--app-text-primary);
+    letter-spacing: 0.02em;
+  }
+
+  &__title-accent {
+    color: var(--app-gold-400);
+  }
+
+  button {
+    color: var(--app-text-secondary);
+  }
+
+  &__progress {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--app-space-1);
+    padding: var(--app-space-1) var(--app-space-3);
+    border-radius: var(--app-radius-pill);
+    border: 1px solid var(--app-glass-border);
+    background: rgba(212, 175, 55, 0.1);
+    color: var(--app-gold-400);
+    font-size: 0.8rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+
+    mat-icon {
+      font-size: 16px;
+      width: 16px;
+      height: 16px;
+    }
+  }
+}

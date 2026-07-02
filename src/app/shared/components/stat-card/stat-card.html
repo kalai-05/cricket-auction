@@ -1,0 +1,9 @@
+<div class="stat-card" appGlassPanel [appGlassTint]="tint()">
+  @if (icon()) {
+    <span class="stat-card__icon material-icons">{{ icon() }}</span>
+  }
+  <div class="stat-card__body">
+    <span class="app-label">{{ label() }}</span>
+    <span class="stat-card__value app-display-numeral">{{ value() }}</span>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+<div class="auction-history">
+  <div class="auction-history__toolbar">
+    <h1 class="app-heading-lg">Auction History</h1>
+    <div class="auction-history__controls">
+      <mat-button-toggle-group [value]="view()" (change)="setView($event.value)">
+        <mat-button-toggle value="timeline">
+          <mat-icon>timeline</mat-icon>
+        </mat-button-toggle>
+        <mat-button-toggle value="table">
+          <mat-icon>table_rows</mat-icon>
+        </mat-button-toggle>
+      </mat-button-toggle-group>
+      <button mat-stroked-button color="accent" (click)="exportCsv()">
+        <mat-icon>download</mat-icon>
+        Export CSV
+      </button>
+    </div>
+  </div>
+
+  @if (view() === 'timeline') {
+    <app-history-timeline [entries]="entries()" />
+  } @else {
+    <app-history-table [entries]="entries()" />
+  }
+</div>

@@ -1,0 +1,24 @@
+@if (!uiStore.isFullscreen()) {
+  <app-header />
+}
+
+<div class="app-shell__body">
+  @if (!uiStore.isFullscreen()) {
+    <app-sidebar-nav />
+  }
+  <main class="app-shell__content">
+    <router-outlet />
+  </main>
+</div>
+
+@if (!uiStore.isFullscreen()) {
+  <app-footer />
+}
+
+<div class="app-shell__toasts">
+  @for (toast of uiStore.toasts(); track toast.id) {
+    <div class="app-shell__toast" [class]="'app-shell__toast--' + toast.type" (click)="dismissToast(toast.id)">
+      {{ toast.text }}
+    </div>
+  }
+</div>

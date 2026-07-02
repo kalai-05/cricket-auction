@@ -1,0 +1,16 @@
+@if (players().length === 0) {
+  <app-empty-state icon="groups" title="No players yet" message="Won players will appear here." />
+} @else {
+  <div class="roster-table">
+    @for (player of players(); track player.id) {
+      <div class="roster-table__row">
+        <app-player-avatar [player]="player" [sizePx]="44" />
+        <div class="roster-table__info">
+          <span class="roster-table__name">{{ player.name }}</span>
+          <span class="app-label">{{ roleLabels[player.role] }} &middot; {{ genderLabels[player.gender] }}</span>
+        </div>
+        <app-credit-pill [amount]="player.soldPrice ?? 0" variant="gold" />
+      </div>
+    }
+  </div>
+}

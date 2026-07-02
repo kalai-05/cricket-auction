@@ -1,0 +1,55 @@
+<div class="filter-panel">
+  <mat-form-field appearance="outline" color="accent">
+    <mat-label>Role</mat-label>
+    <mat-select
+      [ngModel]="playerFacade.roleFilter()"
+      (ngModelChange)="setRole($event)"
+    >
+      <mat-option [value]="null">All Roles</mat-option>
+      @for (r of roles; track r) {
+        <mat-option [value]="r">{{ roleLabels[r] }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" color="accent">
+    <mat-label>Gender</mat-label>
+    <mat-select
+      [ngModel]="playerFacade.genderFilter()"
+      (ngModelChange)="setGender($event)"
+    >
+      <mat-option [value]="null">All Genders</mat-option>
+      @for (g of genders; track g) {
+        <mat-option [value]="g">{{ genderLabels[g] }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" color="accent">
+    <mat-label>Category</mat-label>
+    <mat-select
+      [ngModel]="playerFacade.categoryFilter()"
+      (ngModelChange)="setCategory($event)"
+    >
+      <mat-option [value]="null">All Categories</mat-option>
+      @for (c of categories; track c) {
+        <mat-option [value]="c">{{ categoryLabels[c] }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" color="accent">
+    <mat-label>Status</mat-label>
+    <mat-select
+      [ngModel]="playerFacade.statusFilter()"
+      (ngModelChange)="setStatus($event)"
+    >
+      <mat-option [value]="null">All Statuses</mat-option>
+      @for (s of statuses; track s) {
+        <mat-option [value]="s">{{ s }}</mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+
+  <button mat-stroked-button (click)="clear()">Clear</button>
+</div>

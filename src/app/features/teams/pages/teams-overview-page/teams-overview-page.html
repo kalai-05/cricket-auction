@@ -1,0 +1,23 @@
+<div class="teams-overview">
+  <h1 class="app-heading-lg">Teams</h1>
+
+  <div class="teams-overview__grid">
+    @for (team of teamFacade.teams(); track team.id) {
+      <a class="teams-overview__card" appGlassPanel appGlassInteractive [routerLink]="[team.id]">
+        <app-team-badge [team]="team" size="lg" [showName]="false" />
+        <span class="app-heading-md">{{ team.name }}</span>
+
+        <app-budget-gauge
+          [spent]="team.spentPurse"
+          [total]="team.totalPurse"
+          [colorHex]="team.colorHex"
+        />
+
+        <span class="app-label">
+          {{ teamFacade.rosterStats()[team.id]?.boysCount ?? 0 }}/{{ team.maxBoys }} Boys &middot;
+          {{ teamFacade.rosterStats()[team.id]?.girlsCount ?? 0 }}/{{ team.maxGirls }} Girls
+        </span>
+      </a>
+    }
+  </div>
+</div>

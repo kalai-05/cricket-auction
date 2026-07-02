@@ -1,0 +1,47 @@
+.gender-split {
+  display: flex;
+  flex-direction: column;
+  gap: var(--app-space-3);
+
+  &__stacked-bar {
+    display: flex;
+    height: 20px;
+    border-radius: var(--app-radius-pill);
+    overflow: hidden;
+    background: var(--app-navy-700);
+  }
+
+  &__segment {
+    height: 100%;
+    transition: width var(--app-duration-slow) var(--app-ease-standard);
+
+    &--0 {
+      background: var(--app-blue-400);
+    }
+
+    &--1 {
+      background: var(--app-gold-400);
+    }
+  }
+
+  &__legend {
+    display: flex;
+    gap: var(--app-space-4);
+    flex-wrap: wrap;
+  }
+
+  &__legend-item {
+    display: flex;
+    align-items: center;
+    gap: var(--app-space-2);
+    font-size: 0.85rem;
+    color: var(--app-text-secondary);
+  }
+
+  &__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: var(--app-radius-pill);
+    display: inline-block;
+  }
+}

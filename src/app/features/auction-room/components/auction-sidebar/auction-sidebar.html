@@ -1,0 +1,42 @@
+<div class="auction-sidebar">
+  <div class="auction-sidebar__panel" appGlassPanel>
+    <span class="app-label">Up Next ({{ auctionFacade.queueCount() }})</span>
+    <div class="auction-sidebar__list">
+      @for (player of upcoming(); track player.id; let i = $index) {
+        <div class="auction-sidebar__row">
+          <span class="auction-sidebar__pos">{{ i + 1 }}</span>
+          <app-player-avatar [player]="player" [sizePx]="32" />
+          <span class="auction-sidebar__name">{{ player.name }}</span>
+        </div>
+      } @empty {
+        <span class="auction-sidebar__empty">Queue is empty</span>
+      }
+    </div>
+  </div>
+
+  <div class="auction-sidebar__panel" appGlassPanel>
+    <span class="app-label">Recent Results</span>
+    <div class="auction-sidebar__list">
+      @for (entry of recentResults(); track entry.id) {
+        <div class="auction-sidebar__row">
+          <mat-icon
+            class="auction-sidebar__result-icon"
+            [class.auction-sidebar__result-icon--unsold]="entry.wasUnsold"
+          >
+            {{ entry.wasUnsold ? 'cancel' : 'check_circle' }}
+          </mat-icon>
+          <div class="auction-sidebar__result-info">
+            <span class="auction-sidebar__name">{{ entry.playerName }}</span>
+            @if (!entry.wasUnsold) {
+              <span class="auction-sidebar__detail">{{ entry.teamName }} &middot; {{ entry.price | appCredits }}</span>
+            } @else {
+              <span class="auction-sidebar__detail">Unsold</span>
+            }
+          </div>
+        </div>
+      } @empty {
+        <span class="auction-sidebar__empty">No results yet</span>
+      }
+    </div>
+  </div>
+</div>

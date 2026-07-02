@@ -1,0 +1,19 @@
+<div class="gender-split">
+  <div class="gender-split__stacked-bar">
+    @for (stat of stats(); track stat.label; let i = $index) {
+      <div
+        class="gender-split__segment"
+        [class]="'gender-split__segment--' + i"
+        [style.width.%]="percentOf(stat.count)"
+      ></div>
+    }
+  </div>
+  <div class="gender-split__legend">
+    @for (stat of stats(); track stat.label; let i = $index) {
+      <span class="gender-split__legend-item">
+        <span class="gender-split__dot" [class]="'gender-split__segment--' + i"></span>
+        {{ stat.label }}: {{ stat.count }}
+      </span>
+    }
+  </div>
+</div>

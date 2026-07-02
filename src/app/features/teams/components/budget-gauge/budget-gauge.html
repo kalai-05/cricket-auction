@@ -1,0 +1,20 @@
+<svg
+  class="budget-gauge"
+  [attr.width]="sizePx()"
+  [attr.height]="sizePx()"
+  viewBox="0 0 100 100"
+>
+  <g class="budget-gauge__rotator">
+    <circle class="budget-gauge__track" cx="50" cy="50" r="40" />
+    <circle
+      class="budget-gauge__value"
+      cx="50"
+      cy="50"
+      r="40"
+      [style.stroke]="colorHex()"
+      [attr.stroke-dasharray]="circumferenceValue"
+      [attr.stroke-dashoffset]="dashOffset()"
+    />
+  </g>
+  <text x="50" y="56" text-anchor="middle" class="budget-gauge__label">{{ percentSpent() }}%</text>
+</svg>

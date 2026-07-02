@@ -1,0 +1,18 @@
+<div class="player-list">
+  <h1 class="app-heading-lg">Players</h1>
+
+  <div class="player-list__toolbar">
+    <app-search-bar />
+    <app-filter-panel />
+  </div>
+
+  @if (playerFacade.filteredPlayers().length === 0) {
+    <app-empty-state icon="person_search" title="No players found" message="Try a different search or filter." />
+  } @else {
+    <div class="player-list__grid">
+      @for (player of playerFacade.filteredPlayers(); track player.id) {
+        <app-player-card [player]="player" />
+      }
+    </div>
+  }
+</div>

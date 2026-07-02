@@ -1,0 +1,16 @@
+@if (buys().length === 0) {
+  <app-empty-state icon="emoji_events" title="No sales yet" />
+} @else {
+  <div class="top-buys">
+    @for (buy of buys(); track buy.playerId; let i = $index) {
+      <div class="top-buys__row">
+        <span class="top-buys__rank">{{ i + 1 }}</span>
+        <div class="top-buys__info">
+          <span class="top-buys__name">{{ buy.playerName }}</span>
+          <span class="app-label">{{ buy.teamName }}</span>
+        </div>
+        <app-credit-pill [amount]="buy.price" variant="gold" />
+      </div>
+    }
+  </div>
+}

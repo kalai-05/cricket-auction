@@ -1,0 +1,21 @@
+@if (entries().length === 0) {
+  <app-empty-state icon="history" title="No history yet" message="Sold and unsold players will appear here." />
+} @else {
+  <div class="history-timeline">
+    @for (entry of entries(); track entry.id) {
+      <div class="history-timeline__item" [class.history-timeline__item--unsold]="entry.wasUnsold">
+        <span class="history-timeline__dot" [style.background]="entry.wasUnsold ? 'var(--app-danger)' : (entry.teamColorHex ?? 'var(--app-gold-400)')"></span>
+        <div class="history-timeline__content">
+          <mat-icon>{{ entry.wasUnsold ? 'cancel' : 'check_circle' }}</mat-icon>
+          <span class="history-timeline__player">{{ entry.playerName }}</span>
+          @if (entry.wasUnsold) {
+            <span class="app-label">went unsold</span>
+          } @else {
+            <span class="app-label">sold to {{ entry.teamName }}</span>
+            <app-credit-pill [amount]="entry.price ?? 0" variant="gold" />
+          }
+        </div>
+      </div>
+    }
+  </div>
+}

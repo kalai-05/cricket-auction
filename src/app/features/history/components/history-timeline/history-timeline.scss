@@ -1,0 +1,45 @@
+.history-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-left: 2px solid var(--app-glass-border);
+  padding-left: var(--app-space-5);
+  margin-left: var(--app-space-2);
+
+  &__item {
+    position: relative;
+    padding: var(--app-space-3) 0;
+  }
+
+  &__dot {
+    position: absolute;
+    left: calc(-1 * var(--app-space-5) - 5px);
+    top: var(--app-space-4);
+    width: 10px;
+    height: 10px;
+    border-radius: var(--app-radius-pill);
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    gap: var(--app-space-2);
+    flex-wrap: wrap;
+
+    mat-icon {
+      font-size: 18px;
+      width: 18px;
+      height: 18px;
+      color: var(--app-success);
+    }
+  }
+
+  &__item--unsold &__content mat-icon {
+    color: var(--app-danger);
+  }
+
+  &__player {
+    font-weight: 600;
+    color: var(--app-text-primary);
+  }
+}

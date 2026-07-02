@@ -1,0 +1,53 @@
+<div class="statistics-dashboard">
+  <h1 class="app-heading-lg">Statistics</h1>
+
+  <div class="statistics-dashboard__stat-row">
+    <app-stat-card label="Auction Progress" [value]="auctionFacade.progressPercent() + '%'" icon="percent" />
+    <app-stat-card label="Players Sold" [value]="totalSold()" icon="check_circle" />
+    <app-stat-card label="Unsold" [value]="totalUnsold()" icon="cancel" tint="blue" />
+    <app-stat-card label="Total Pool" [value]="totalPool()" icon="groups" />
+  </div>
+
+  <div class="statistics-dashboard__stat-row">
+    <app-stat-card label="Highest Buy" [value]="highestBuy() + ' Cr'" icon="emoji_events" tint="blue" />
+    <app-stat-card label="Lowest Buy" [value]="(lowestBuy()?.price ?? 0) + ' Cr'" icon="trending_down" />
+    <app-stat-card label="Average Price" [value]="averagePrice() + ' Cr'" icon="functions" tint="blue" />
+    <app-stat-card label="Boys / Girls Bought" [value]="boysPurchased() + ' / ' + girlsPurchased()" icon="diversity_3" />
+  </div>
+
+  <div class="statistics-dashboard__stat-row">
+    <app-stat-card
+      label="Biggest Spender"
+      [value]="mostExpensiveTeam()?.name ?? '—'"
+      icon="paid"
+      tint="blue"
+    />
+    <app-stat-card
+      label="Least Budget Left"
+      [value]="leastBudgetTeam()?.name ?? '—'"
+      icon="account_balance_wallet"
+    />
+  </div>
+
+  <div class="statistics-dashboard__grid">
+    <div class="statistics-dashboard__panel" appGlassPanel>
+      <span class="app-heading-md">Spend by Team</span>
+      <app-spend-chart [stats]="teamSpend()" />
+    </div>
+
+    <div class="statistics-dashboard__panel" appGlassPanel>
+      <span class="app-heading-md">Top Buys</span>
+      <app-top-buys-widget [buys]="topBuys()" />
+    </div>
+
+    <div class="statistics-dashboard__panel" appGlassPanel>
+      <span class="app-heading-md">Gender Split (Sold)</span>
+      <app-gender-split-chart [stats]="genderSplit()" />
+    </div>
+
+    <div class="statistics-dashboard__panel" appGlassPanel>
+      <span class="app-heading-md">Role Distribution (Sold)</span>
+      <app-role-distribution-chart [stats]="roleDistribution()" />
+    </div>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+.teams-overview {
+  display: flex;
+  flex-direction: column;
+  gap: var(--app-space-5);
+  max-width: 1200px;
+  margin: 0 auto;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: var(--app-space-4);
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--app-space-3);
+    padding: var(--app-space-5);
+    text-decoration: none;
+    color: inherit;
+  }
+}

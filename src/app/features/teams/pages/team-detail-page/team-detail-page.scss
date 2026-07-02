@@ -1,0 +1,42 @@
+.team-detail {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--app-space-4);
+
+  &__back {
+    display: flex;
+    align-items: center;
+    gap: var(--app-space-1);
+    color: var(--app-text-secondary);
+    text-decoration: none;
+    width: fit-content;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: var(--app-space-5);
+    padding: var(--app-space-5);
+    flex-wrap: wrap;
+  }
+
+  &__header-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--app-space-1);
+    flex: 1;
+  }
+
+  &__purse {
+    display: flex;
+    flex-direction: column;
+    gap: var(--app-space-2);
+  }
+
+  &__squad-meta {
+    display: flex;
+    gap: var(--app-space-4);
+  }
+}

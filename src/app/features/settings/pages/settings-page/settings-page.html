@@ -1,0 +1,97 @@
+<div class="settings-page">
+  <h1 class="app-heading-lg">Settings</h1>
+
+  <section class="settings-page__section" appGlassPanel>
+    <span class="app-heading-md">Auction Rules</span>
+    <p class="app-body">
+      Changes apply to teams created after saving — teams already set up keep their original purse and squad caps.
+    </p>
+    <form [formGroup]="form" (ngSubmit)="saveSettings()" class="settings-page__form">
+      <mat-form-field appearance="outline" color="accent">
+        <mat-label>Credits per Team</mat-label>
+        <input matInput type="number" formControlName="totalCreditsPerTeam" />
+      </mat-form-field>
+      <mat-form-field appearance="outline" color="accent">
+        <mat-label>Number of Teams</mat-label>
+        <input matInput type="number" formControlName="teamCount" />
+      </mat-form-field>
+      <mat-form-field appearance="outline" color="accent">
+        <mat-label>Max Boys per Team</mat-label>
+        <input matInput type="number" formControlName="maxBoys" />
+      </mat-form-field>
+      <mat-form-field appearance="outline" color="accent">
+        <mat-label>Max Girls per Team</mat-label>
+        <input matInput type="number" formControlName="maxGirls" />
+      </mat-form-field>
+      <mat-form-field appearance="outline" color="accent">
+        <mat-label>Default Base Price (Cr)</mat-label>
+        <input matInput type="number" step="0.5" formControlName="defaultBasePrice" />
+      </mat-form-field>
+      <mat-form-field appearance="outline" color="accent">
+        <mat-label>Bid Timer (seconds)</mat-label>
+        <input matInput type="number" formControlName="bidTimerSeconds" />
+      </mat-form-field>
+      <button mat-flat-button color="primary" type="submit">Save Settings</button>
+    </form>
+  </section>
+
+  <section class="settings-page__section" appGlassPanel>
+    <span class="app-heading-md">Presentation</span>
+    <mat-slide-toggle
+      [checked]="settingsStore.settings().timerEnabled"
+      (change)="toggleTimer($event.checked)"
+    >
+      Countdown timer (auto-sell when it hits zero)
+    </mat-slide-toggle>
+    <mat-slide-toggle [checked]="soundEffects.enabled()" (change)="soundEffects.toggle()">
+      Sound effects (bid / sold / unsold)
+    </mat-slide-toggle>
+    <div class="settings-page__volume">
+      <span class="app-label">Volume</span>
+      <mat-slider [min]="0" [max]="1" [step]="0.05" [disabled]="!soundEffects.enabled()">
+        <input matSliderThumb [value]="soundEffects.volume()" (valueChange)="setVolume($event)" />
+      </mat-slider>
+    </div>
+  </section>
+
+  <section class="settings-page__section" appGlassPanel>
+    <span class="app-heading-md">Export</span>
+    <div class="settings-page__actions">
+      <button mat-stroked-button color="accent" (click)="exportBackup()">
+        <mat-icon>save</mat-icon>
+        Download Full Backup (JSON)
+      </button>
+      <label class="settings-page__file-btn">
+        <mat-icon>upload</mat-icon>
+        Restore from Backup
+        <input type="file" accept="application/json" (change)="importBackup($event)" hidden />
+      </label>
+      <button mat-stroked-button color="accent" (click)="exportRosters()">
+        <mat-icon>table_view</mat-icon>
+        Export Team Rosters (CSV)
+      </button>
+      <button mat-stroked-button color="accent" (click)="exportRostersExcel()">
+        <mat-icon>grid_on</mat-icon>
+        Export Team Rosters (Excel)
+      </button>
+      <button mat-stroked-button color="accent" (click)="print()">
+        <mat-icon>print</mat-icon>
+        Print Results
+      </button>
+    </div>
+  </section>
+
+  <section class="settings-page__section settings-page__section--danger" appGlassPanel>
+    <span class="app-heading-md">Danger Zone</span>
+    <div class="settings-page__actions">
+      <button mat-stroked-button color="warn" (click)="confirmResetAuction()">
+        <mat-icon>restart_alt</mat-icon>
+        Reset Auction
+      </button>
+      <button mat-flat-button color="warn" (click)="confirmResetEverything()">
+        <mat-icon>delete_forever</mat-icon>
+        Start New Tournament
+      </button>
+    </div>
+  </section>
+</div>

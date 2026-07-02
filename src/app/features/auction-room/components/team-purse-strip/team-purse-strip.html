@@ -1,0 +1,18 @@
+<div class="team-purse-strip">
+  @for (team of teamFacade.teams(); track team.id) {
+    <button
+      class="team-purse-strip__card"
+      appGlassPanel
+      [appGlassGlow]="auctionFacade.currentBiddingTeam()?.id === team.id"
+      [class.team-purse-strip__card--leading]="auctionFacade.currentBiddingTeam()?.id === team.id"
+      (click)="openTeamDetail(team.id)"
+    >
+      <app-team-badge [team]="team" size="md" />
+      <app-credit-pill [amount]="teamFacade.rosterStats()[team.id]?.remainingPurse ?? 0" variant="gold" />
+      <span class="app-label">
+        {{ teamFacade.rosterStats()[team.id]?.boysCount ?? 0 }}/{{ team.maxBoys }} Boys &middot;
+        {{ teamFacade.rosterStats()[team.id]?.girlsCount ?? 0 }}/{{ team.maxGirls }} Girls
+      </span>
+    </button>
+  }
+</div>

@@ -1,0 +1,8 @@
+.app-footer {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--app-space-3) var(--app-space-5);
+  font-size: 0.75rem;
+  color: var(--app-text-muted);
+  border-top: 1px solid var(--app-glass-border);
+}

@@ -1,0 +1,22 @@
+<a
+  class="player-card"
+  appGlassPanel
+  appGlassInteractive
+  [routerLink]="[player().id]"
+  [class]="'player-card--' + player().status.toLowerCase()"
+>
+  <app-player-avatar [player]="player()" [sizePx]="56" />
+  <div class="player-card__info">
+    <span class="player-card__name">{{ player().name }}</span>
+    <span class="app-label">{{ categoryLabels[player().category] }} &middot; {{ roleLabels[player().role] }} &middot; {{ genderLabels[player().gender] }}</span>
+  </div>
+  @if (player().status === PlayerStatus.Sold) {
+    <app-credit-pill [amount]="player().soldPrice ?? 0" variant="gold" />
+  } @else if (player().status === PlayerStatus.Unsold) {
+    <span class="player-card__badge player-card__badge--unsold">Unsold</span>
+  } @else if (player().status === PlayerStatus.InAuction) {
+    <span class="player-card__badge player-card__badge--live">Live</span>
+  } @else {
+    <app-credit-pill [amount]="player().basePrice" variant="blue" />
+  }
+</a>

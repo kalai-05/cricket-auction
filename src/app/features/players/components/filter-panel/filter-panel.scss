@@ -1,0 +1,14 @@
+.filter-panel {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--app-space-3);
+  flex-wrap: wrap;
+
+  mat-form-field {
+    width: 160px;
+  }
+
+  button {
+    margin-top: 8px;
+  }
+}

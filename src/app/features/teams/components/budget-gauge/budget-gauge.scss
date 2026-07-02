@@ -1,0 +1,25 @@
+.budget-gauge {
+  &__rotator {
+    transform: rotate(-90deg);
+    transform-origin: 50px 50px;
+  }
+
+  &__track {
+    fill: none;
+    stroke: var(--app-navy-600);
+    stroke-width: 8;
+  }
+
+  &__value {
+    fill: none;
+    stroke-width: 8;
+    stroke-linecap: round;
+    transition: stroke-dashoffset var(--app-duration-slow) var(--app-ease-standard);
+  }
+
+  &__label {
+    fill: var(--app-text-primary);
+    font-size: 18px;
+    font-weight: 700;
+  }
+}

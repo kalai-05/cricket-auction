@@ -1,0 +1,93 @@
+.player-detail {
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--app-space-4);
+
+  &__back {
+    display: flex;
+    align-items: center;
+    gap: var(--app-space-1);
+    color: var(--app-text-secondary);
+    text-decoration: none;
+    width: fit-content;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: var(--app-space-5);
+    padding: var(--app-space-5);
+    flex-wrap: wrap;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--app-space-2);
+    flex: 1;
+  }
+
+  &__meta {
+    display: flex;
+    gap: var(--app-space-2);
+  }
+
+  &__chip {
+    background: var(--app-glass-bg-strong);
+    padding: var(--app-space-1) var(--app-space-3);
+    border-radius: var(--app-radius-pill);
+    font-size: 0.8rem;
+    color: var(--app-text-secondary);
+  }
+
+  &__stars {
+    display: flex;
+    gap: var(--app-space-1);
+
+    mat-icon {
+      color: var(--app-navy-500);
+    }
+  }
+
+  &__star--filled {
+    color: var(--app-gold-400) !important;
+  }
+
+  &__status {
+    display: flex;
+    align-items: center;
+    gap: var(--app-space-3);
+    padding: var(--app-space-4);
+  }
+
+  &__status-icon {
+    color: var(--app-text-muted);
+
+    &--sold {
+      color: var(--app-success);
+    }
+
+    &--unsold {
+      color: var(--app-danger);
+    }
+
+    &--live {
+      color: var(--app-blue-400);
+    }
+  }
+
+  &__trail {
+    display: flex;
+    flex-direction: column;
+    gap: var(--app-space-2);
+    padding: var(--app-space-4);
+  }
+
+  &__trail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}

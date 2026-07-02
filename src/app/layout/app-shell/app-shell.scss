@@ -1,0 +1,57 @@
+// Fixed-viewport dashboard layout: the header, sidebar and footer stay pinned;
+// only the routed content area scrolls.
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+.app-shell {
+  &__body {
+    display: flex;
+    flex: 1;
+    min-height: 0;
+  }
+
+  &__content {
+    flex: 1;
+    min-width: 0;
+    padding: var(--app-space-5);
+    overflow-y: auto;
+  }
+
+  &__toasts {
+    position: fixed;
+    bottom: var(--app-space-5);
+    right: var(--app-space-5);
+    display: flex;
+    flex-direction: column;
+    gap: var(--app-space-2);
+    z-index: var(--app-z-toast);
+  }
+
+  &__toast {
+    padding: var(--app-space-3) var(--app-space-4);
+    border-radius: var(--app-radius-md);
+    background: var(--app-navy-700);
+    border: 1px solid var(--app-glass-border);
+    box-shadow: var(--app-shadow-elevate);
+    color: var(--app-text-primary);
+    cursor: pointer;
+    max-width: 320px;
+
+    &--success {
+      border-color: var(--app-success);
+    }
+
+    &--warning {
+      border-color: var(--app-warning);
+    }
+
+    &--error {
+      border-color: var(--app-danger);
+    }
+  }
+}

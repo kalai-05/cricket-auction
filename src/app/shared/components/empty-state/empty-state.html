@@ -1,0 +1,8 @@
+<div class="empty-state">
+  <span class="material-icons empty-state__icon">{{ icon() }}</span>
+  <span class="app-heading-md">{{ title() }}</span>
+  @if (message()) {
+    <span class="app-body">{{ message() }}</span>
+  }
+  <ng-content />
+</div>

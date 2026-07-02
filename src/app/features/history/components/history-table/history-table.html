@@ -1,0 +1,34 @@
+@if (entries().length === 0) {
+  <app-empty-state icon="table_rows" title="No history yet" />
+} @else {
+  <table class="history-table">
+    <thead>
+      <tr>
+        <th>Player</th>
+        <th>Team</th>
+        <th>Price</th>
+        <th>Result</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (entry of entries(); track entry.id) {
+        <tr>
+          <td>{{ entry.playerName }}</td>
+          <td>{{ entry.teamName ?? '—' }}</td>
+          <td>
+            @if (!entry.wasUnsold) {
+              <app-credit-pill [amount]="entry.price ?? 0" variant="gold" />
+            } @else {
+              —
+            }
+          </td>
+          <td>
+            <span [class]="entry.wasUnsold ? 'history-table__badge history-table__badge--unsold' : 'history-table__badge history-table__badge--sold'">
+              {{ entry.wasUnsold ? 'Unsold' : 'Sold' }}
+            </span>
+          </td>
+        </tr>
+      }
+    </tbody>
+  </table>
+}

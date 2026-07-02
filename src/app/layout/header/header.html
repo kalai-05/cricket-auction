@@ -1,0 +1,41 @@
+<header class="app-header">
+  <div class="app-header__left">
+    <button mat-icon-button (click)="toggleSidebar()" aria-label="Toggle navigation">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <a class="app-header__brand" routerLink="/auction">
+      <mat-icon class="app-header__brand-icon">sports_cricket</mat-icon>
+      <span class="app-header__title">SenzMate <span class="app-header__title-accent">Mega Auction 2026</span></span>
+    </a>
+  </div>
+
+  <div class="app-header__right">
+    @if (showProgress()) {
+      <span class="app-header__progress" matTooltip="Auction progress">
+        <mat-icon>gavel</mat-icon>
+        {{ progressLabel() }}
+      </span>
+    }
+    <button
+      mat-icon-button
+      [matTooltip]="soundEffects.enabled() ? 'Mute sounds' : 'Unmute sounds'"
+      (click)="toggleMute()"
+    >
+      <mat-icon>{{ soundEffects.enabled() ? 'volume_up' : 'volume_off' }}</mat-icon>
+    </button>
+    <button
+      mat-icon-button
+      matTooltip="Toggle projector mode"
+      (click)="toggleTheme()"
+    >
+      <mat-icon>{{ uiStore.theme() === 'projector' ? 'tv_off' : 'tv' }}</mat-icon>
+    </button>
+    <button
+      mat-icon-button
+      matTooltip="Toggle fullscreen"
+      (click)="toggleFullscreen()"
+    >
+      <mat-icon>{{ uiStore.isFullscreen() ? 'fullscreen_exit' : 'fullscreen' }}</mat-icon>
+    </button>
+  </div>
+</header>

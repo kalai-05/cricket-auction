@@ -1,0 +1,37 @@
+<div class="team-setup">
+  <h1 class="app-heading-lg">Set Up Your {{ teamCount }} Teams</h1>
+  <p class="app-body">Every team begins the auction with an equal purse. Names and colors can be changed later in Settings.</p>
+
+  <form [formGroup]="form" (ngSubmit)="submit()" class="team-setup__grid">
+    @for (group of teamControls; track $index) {
+      <div class="team-setup__card" appGlassPanel [formGroup]="group">
+        <div class="team-setup__color-row">
+          <input type="color" formControlName="colorHex" class="team-setup__color-input" />
+          <span class="app-label">Team {{ $index + 1 }}</span>
+        </div>
+
+        <mat-form-field appearance="outline" color="accent">
+          <mat-label>Team Name</mat-label>
+          <input matInput formControlName="name" maxlength="30" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" color="accent">
+          <mat-label>Short Code</mat-label>
+          <input matInput formControlName="shortCode" maxlength="4" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" color="accent">
+          <mat-label>Logo URL (optional)</mat-label>
+          <input matInput formControlName="logoUrl" placeholder="https://..." />
+        </mat-form-field>
+      </div>
+    }
+  </form>
+
+  <div class="team-setup__actions">
+    <button mat-flat-button color="primary" (click)="submit()">
+      Continue to Player Pool
+      <mat-icon iconPositionEnd>arrow_forward</mat-icon>
+    </button>
+  </div>
+</div>

@@ -1,0 +1,68 @@
+// Overrides Angular Material's M3 system color tokens with our navy/gold/blue
+// brand so every mat- component (buttons, inputs, dialogs, tables...) picks up
+// the custom look automatically, without hand-theming each one individually.
+// Token names verified against the compiled output of `mat.theme()`.
+
+:root {
+  color-scheme: dark;
+
+  // Core roles
+  --mat-sys-primary: var(--app-blue-400);
+  --mat-sys-on-primary: #04101f;
+  --mat-sys-primary-container: var(--app-blue-600);
+  --mat-sys-on-primary-container: #d8ecff;
+
+  --mat-sys-secondary: var(--app-gold-500);
+  --mat-sys-on-secondary: #241a00;
+  --mat-sys-secondary-container: var(--app-navy-600);
+  --mat-sys-on-secondary-container: var(--app-gold-300);
+
+  --mat-sys-tertiary: var(--app-gold-400);
+  --mat-sys-on-tertiary: #241a00;
+  --mat-sys-tertiary-container: var(--app-navy-600);
+  --mat-sys-on-tertiary-container: var(--app-gold-300);
+
+  --mat-sys-error: var(--app-danger);
+  --mat-sys-on-error: #2a0007;
+  --mat-sys-error-container: #4a0f1c;
+  --mat-sys-on-error-container: #ffd7dd;
+
+  // Backgrounds / surfaces
+  --mat-sys-background: var(--app-navy-950);
+  --mat-sys-on-background: var(--app-text-primary);
+
+  --mat-sys-surface: var(--app-navy-900);
+  --mat-sys-on-surface: var(--app-text-primary);
+  --mat-sys-surface-variant: var(--app-navy-700);
+  --mat-sys-on-surface-variant: var(--app-text-secondary);
+
+  --mat-sys-surface-dim: var(--app-navy-950);
+  --mat-sys-surface-bright: var(--app-navy-600);
+  --mat-sys-surface-container-lowest: var(--app-navy-950);
+  --mat-sys-surface-container-low: var(--app-navy-900);
+  --mat-sys-surface-container: var(--app-navy-800);
+  --mat-sys-surface-container-high: var(--app-navy-700);
+  --mat-sys-surface-container-highest: var(--app-navy-600);
+
+  --mat-sys-outline: rgba(169, 177, 204, 0.4);
+  --mat-sys-outline-variant: rgba(169, 177, 204, 0.16);
+
+  --mat-sys-inverse-surface: var(--app-text-primary);
+  --mat-sys-inverse-on-surface: var(--app-navy-900);
+  --mat-sys-inverse-primary: var(--app-blue-600);
+
+  --mat-sys-shadow: #000000;
+  --mat-sys-scrim: #000000;
+  --mat-sys-surface-tint: var(--app-blue-400);
+}
+
+// "Projector Mode" — boosts scale/contrast further for large-screen readability.
+// Toggled by ThemeService via a class on <body>.
+body.theme-projector {
+  --mat-sys-body-medium-size: 1.05rem;
+  font-size: 1.1rem;
+
+  .app-heading-xl {
+    font-size: clamp(2.5rem, 4vw, 4.25rem);
+  }
+}

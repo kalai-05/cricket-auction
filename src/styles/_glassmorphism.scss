@@ -1,0 +1,71 @@
+// Reusable glassmorphism surface treatment.
+// Applied via the `appGlassPanel` directive or directly with @include in component styles.
+
+@mixin glass-panel($tint: gold, $strong: false) {
+  @if $strong {
+    background: var(--app-glass-bg-strong);
+  } @else {
+    background: var(--app-glass-bg);
+  }
+
+  backdrop-filter: blur(var(--app-glass-blur));
+  -webkit-backdrop-filter: blur(var(--app-glass-blur));
+
+  @if $tint == blue {
+    border: 1px solid var(--app-glass-border-blue);
+  } @else {
+    border: 1px solid var(--app-glass-border);
+  }
+
+  border-radius: var(--app-radius-lg);
+  box-shadow: var(--app-shadow-elevate);
+}
+
+@mixin glass-glow($tint: gold) {
+  @if $tint == blue {
+    box-shadow:
+      var(--app-shadow-elevate),
+      var(--app-glow-blue);
+  } @else {
+    box-shadow:
+      var(--app-shadow-elevate),
+      var(--app-glow-gold);
+  }
+}
+
+@mixin glass-interactive {
+  transition:
+    transform var(--app-duration-base) var(--app-ease-standard),
+    box-shadow var(--app-duration-base) var(--app-ease-standard),
+    border-color var(--app-duration-base) var(--app-ease-standard);
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+}
+
+// Runtime utility classes (toggled by the `appGlassPanel` directive) since a
+// Sass mixin can't be invoked at runtime from a component's TS.
+.glass-panel {
+  @include glass-panel();
+}
+
+.glass-panel--blue {
+  @include glass-panel($tint: blue);
+}
+
+.glass-panel--strong {
+  @include glass-panel($strong: true);
+}
+
+.glass-panel--interactive {
+  @include glass-interactive();
+}
+
+.glass-panel--glow {
+  @include glass-glow();
+}
+
+.glass-panel--glow-blue {
+  @include glass-glow($tint: blue);
+}

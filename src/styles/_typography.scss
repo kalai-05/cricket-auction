@@ -1,0 +1,45 @@
+// Typography scale. Roboto (loaded via index.html) for body copy;
+// a condensed display treatment (weight + letter-spacing, no extra font fetch)
+// for the large scoreboard numerals shown on the projector screen.
+
+.app-display-numeral {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-stretch: condensed;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  color: var(--app-gold-400);
+}
+
+.app-heading-xl {
+  font-size: clamp(2rem, 3vw, 3.25rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--app-text-primary);
+}
+
+.app-heading-lg {
+  font-size: clamp(1.5rem, 2vw, 2.25rem);
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--app-text-primary);
+}
+
+.app-heading-md {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--app-text-primary);
+}
+
+.app-label {
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--app-text-secondary);
+}
+
+.app-body {
+  font-size: 0.95rem;
+  color: var(--app-text-secondary);
+}

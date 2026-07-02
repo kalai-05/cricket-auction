@@ -1,0 +1,48 @@
+.team-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--app-space-2);
+
+  &__swatch {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--app-radius-pill);
+    overflow: hidden;
+    flex-shrink: 0;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__initial {
+    font-weight: 700;
+    color: #04101f;
+  }
+
+  &__name {
+    font-weight: 600;
+    color: var(--app-text-primary);
+  }
+
+  &--sm &__swatch {
+    width: 24px;
+    height: 24px;
+    font-size: 0.65rem;
+  }
+
+  &--md &__swatch {
+    width: 36px;
+    height: 36px;
+    font-size: 0.85rem;
+  }
+
+  &--lg &__swatch {
+    width: 56px;
+    height: 56px;
+    font-size: 1.2rem;
+  }
+}

@@ -1,0 +1,33 @@
+@if (team(); as t) {
+  <div class="team-detail">
+    <a routerLink="/teams" class="team-detail__back">
+      <mat-icon>arrow_back</mat-icon>
+      Back to Teams
+    </a>
+
+    <div class="team-detail__header" appGlassPanel>
+      <app-team-badge [team]="t" size="lg" [showName]="false" />
+      <div class="team-detail__header-info">
+        <span class="app-heading-xl">{{ t.name }}</span>
+        <span class="app-label">{{ t.shortCode }}</span>
+      </div>
+      <app-budget-gauge [spent]="t.spentPurse" [total]="t.totalPurse" [colorHex]="t.colorHex" [sizePx]="120" />
+      <div class="team-detail__purse">
+        <app-credit-pill [amount]="stats().remainingPurse" label="Remaining" variant="gold" />
+        <app-credit-pill [amount]="t.spentPurse" label="Spent" variant="blue" />
+      </div>
+    </div>
+
+    <div class="team-detail__squad-meta">
+      <span class="app-label">
+        Boys: {{ stats().boysCount }} / {{ t.maxBoys }}
+      </span>
+      <span class="app-label">
+        Girls: {{ stats().girlsCount }} / {{ t.maxGirls }}
+      </span>
+    </div>
+
+    <h2 class="app-heading-md">Roster</h2>
+    <app-roster-table [players]="roster()" />
+  </div>
+}

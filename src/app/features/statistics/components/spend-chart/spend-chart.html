@@ -1,0 +1,15 @@
+<div class="spend-chart">
+  @for (stat of stats(); track stat.teamId) {
+    <div class="spend-chart__row">
+      <span class="spend-chart__label">{{ stat.teamName }}</span>
+      <div class="spend-chart__track">
+        <div
+          class="spend-chart__bar"
+          [style.width.%]="percentOf(stat.spent)"
+          [style.background]="stat.colorHex"
+        ></div>
+      </div>
+      <app-credit-pill [amount]="stat.spent" variant="gold" />
+    </div>
+  }
+</div>

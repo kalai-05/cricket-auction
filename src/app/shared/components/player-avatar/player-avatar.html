@@ -1,0 +1,10 @@
+<span class="player-avatar" [style.width.px]="sizePx()" [style.height.px]="sizePx()">
+  @if (player().photoUrl) {
+    <img [src]="player().photoUrl" [alt]="player().name" />
+  } @else {
+    <span class="player-avatar__initials">{{ initials() }}</span>
+  }
+  <span class="player-avatar__role-badge">
+    <span class="material-icons">{{ player().role | appRoleIcon }}</span>
+  </span>
+</span>

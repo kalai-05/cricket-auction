@@ -1,0 +1,59 @@
+@keyframes countdown-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+.bid-countdown {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--app-space-2);
+  padding: var(--app-space-2) var(--app-space-4);
+  border-radius: var(--app-radius-pill);
+  border: 1px solid var(--app-glass-border);
+  background: var(--app-glass-bg);
+
+  &__seconds {
+    font-size: 1.6rem;
+    min-width: 2ch;
+    text-align: center;
+  }
+
+  &__label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--app-text-muted);
+  }
+
+  &__hammer {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 0.85rem;
+    animation: countdown-pulse 0.6s ease-in-out infinite;
+  }
+
+  &--warning {
+    border-color: var(--app-warning);
+
+    .bid-countdown__seconds,
+    .bid-countdown__hammer {
+      color: var(--app-warning);
+    }
+  }
+
+  &--critical {
+    border-color: var(--app-danger);
+    animation: countdown-pulse 0.5s ease-in-out infinite;
+
+    .bid-countdown__seconds,
+    .bid-countdown__hammer {
+      color: var(--app-danger);
+    }
+  }
+}

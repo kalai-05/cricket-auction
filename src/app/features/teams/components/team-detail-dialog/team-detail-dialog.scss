@@ -1,0 +1,19 @@
+:host {
+  display: block;
+  min-width: min(480px, 90vw);
+}
+
+.team-dialog {
+  &__pills {
+    display: flex;
+    gap: var(--app-space-3);
+    flex-wrap: wrap;
+    margin-bottom: var(--app-space-3);
+  }
+
+  &__meta {
+    display: flex;
+    gap: var(--app-space-4);
+    margin-bottom: var(--app-space-4);
+  }
+}

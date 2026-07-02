@@ -1,0 +1,21 @@
+@if (team(); as t) {
+  <h2 mat-dialog-title>
+    <app-team-badge [team]="t" size="md" />
+  </h2>
+  <mat-dialog-content>
+    <div class="team-dialog__pills">
+      <app-credit-pill [amount]="stats().remainingPurse" label="Remaining" variant="gold" />
+      <app-credit-pill [amount]="t.spentPurse" label="Spent" variant="blue" />
+      <app-credit-pill [amount]="averageCost()" label="Avg / Player" variant="blue" />
+    </div>
+    <div class="team-dialog__meta">
+      <span class="app-label">Boys: {{ stats().boysCount }} / {{ t.maxBoys }}</span>
+      <span class="app-label">Girls: {{ stats().girlsCount }} / {{ t.maxGirls }}</span>
+      <span class="app-label">Players: {{ t.playerIds.length }}</span>
+    </div>
+    <app-roster-table [players]="roster()" />
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Close</button>
+  </mat-dialog-actions>
+}

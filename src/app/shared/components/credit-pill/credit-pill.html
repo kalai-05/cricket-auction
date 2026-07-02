@@ -1,0 +1,6 @@
+<span class="credit-pill" [class]="'credit-pill--' + variant()">
+  @if (label()) {
+    <span class="credit-pill__label">{{ label() }}</span>
+  }
+  <span class="credit-pill__value">{{ amount() | appCredits }}</span>
+</span>

@@ -1,0 +1,13 @@
+@if (visible()) {
+  <div
+    class="bid-countdown"
+    [class.bid-countdown--warning]="auctionFacade.hammerPhase() === 'going-once'"
+    [class.bid-countdown--critical]="auctionFacade.hammerPhase() === 'going-twice'"
+  >
+    <span class="bid-countdown__seconds app-display-numeral">{{ auctionFacade.timeLeft() }}</span>
+    <span class="bid-countdown__label">sec</span>
+    @if (hammerText()) {
+      <span class="bid-countdown__hammer">{{ hammerText() }}</span>
+    }
+  </div>
+}

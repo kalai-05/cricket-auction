@@ -1,0 +1,44 @@
+.sidebar-nav {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--app-space-1);
+  padding: var(--app-space-4) var(--app-space-3);
+  width: 220px;
+  overflow-y: auto;
+  background: rgba(10, 14, 39, 0.55);
+  border-right: 1px solid var(--app-glass-border);
+  transition: width var(--app-duration-base) var(--app-ease-standard);
+  z-index: var(--app-z-sidebar);
+
+  &--collapsed {
+    width: 72px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: var(--app-space-3);
+    padding: var(--app-space-3);
+    border-radius: var(--app-radius-md);
+    color: var(--app-text-secondary);
+    text-decoration: none;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    transition:
+      background var(--app-duration-fast) var(--app-ease-standard),
+      color var(--app-duration-fast) var(--app-ease-standard);
+
+    &:hover {
+      background: var(--app-glass-bg);
+      color: var(--app-text-primary);
+    }
+
+    &--active {
+      background: rgba(212, 175, 55, 0.14);
+      color: var(--app-gold-400);
+      border: 1px solid var(--app-glass-border);
+    }
+  }
+}

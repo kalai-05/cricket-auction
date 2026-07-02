@@ -1,0 +1,60 @@
+.settings-page {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--app-space-4);
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+    gap: var(--app-space-3);
+    padding: var(--app-space-5);
+
+    &--danger {
+      border-color: rgba(255, 77, 109, 0.4) !important;
+    }
+  }
+
+  &__form {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: var(--app-space-3);
+    align-items: start;
+
+    button {
+      grid-column: 1 / -1;
+      justify-self: flex-start;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    gap: var(--app-space-3);
+    flex-wrap: wrap;
+  }
+
+  &__volume {
+    display: flex;
+    align-items: center;
+    gap: var(--app-space-3);
+
+    mat-slider {
+      width: 220px;
+    }
+  }
+
+  &__file-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--app-space-2);
+    padding: 0 var(--app-space-4);
+    height: 36px;
+    border-radius: var(--app-radius-pill);
+    border: 1px solid var(--app-blue-400);
+    color: var(--app-blue-400);
+    cursor: pointer;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+}

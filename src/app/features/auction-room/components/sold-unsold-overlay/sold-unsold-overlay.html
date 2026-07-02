@@ -1,0 +1,18 @@
+@if (state().visible) {
+  <div
+    class="sold-overlay"
+    [class.sold-overlay--sold]="!state().wasUnsold"
+    [class.sold-overlay--unsold]="state().wasUnsold"
+  >
+    <div class="sold-overlay__content">
+      <span class="sold-overlay__status">{{ state().wasUnsold ? 'UNSOLD' : 'SOLD!' }}</span>
+      <span class="sold-overlay__name">{{ state().playerName }}</span>
+      @if (!state().wasUnsold) {
+        <div class="sold-overlay__details">
+          <span>to {{ state().teamName }}</span>
+          <app-credit-pill [amount]="state().price ?? 0" variant="gold" />
+        </div>
+      }
+    </div>
+  </div>
+}

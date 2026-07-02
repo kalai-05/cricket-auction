@@ -1,0 +1,27 @@
+.auction-stage {
+  display: grid;
+  grid-template-columns: 250px minmax(0, 1fr) 280px;
+  gap: var(--app-space-5);
+  max-width: 1500px;
+  margin: 0 auto;
+  align-items: start;
+
+  &__center {
+    display: flex;
+    flex-direction: column;
+    gap: var(--app-space-5);
+  }
+
+  @media (max-width: 1200px) {
+    grid-template-columns: minmax(0, 1fr) 260px;
+
+    &__teams {
+      grid-column: 1 / -1;
+      order: -1;
+    }
+  }
+
+  @media (max-width: 800px) {
+    grid-template-columns: 1fr;
+  }
+}

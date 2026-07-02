@@ -1,0 +1,16 @@
+<div class="auction-stage">
+  <aside class="auction-stage__teams">
+    <app-team-purse-strip />
+  </aside>
+
+  <div class="auction-stage__center">
+    <app-current-player-card [player]="auctionFacade.currentPlayer()" />
+    <app-bidding-console />
+  </div>
+
+  <aside class="auction-stage__sidebar">
+    <app-auction-sidebar />
+  </aside>
+</div>
+
+<app-sold-unsold-overlay />

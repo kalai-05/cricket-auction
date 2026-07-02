@@ -1,0 +1,37 @@
+.role-distribution {
+  display: flex;
+  flex-direction: column;
+  gap: var(--app-space-3);
+
+  &__row {
+    display: grid;
+    grid-template-columns: 110px 1fr 30px;
+    align-items: center;
+    gap: var(--app-space-3);
+  }
+
+  &__label {
+    font-size: 0.85rem;
+    color: var(--app-text-secondary);
+  }
+
+  &__track {
+    height: 10px;
+    border-radius: var(--app-radius-pill);
+    background: var(--app-navy-700);
+    overflow: hidden;
+  }
+
+  &__bar {
+    height: 100%;
+    border-radius: var(--app-radius-pill);
+    background: linear-gradient(90deg, var(--app-blue-500), var(--app-blue-400));
+    transition: width var(--app-duration-slow) var(--app-ease-standard);
+  }
+
+  &__count {
+    text-align: right;
+    font-weight: 700;
+    color: var(--app-text-primary);
+  }
+}

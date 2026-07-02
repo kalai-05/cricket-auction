@@ -1,0 +1,14 @@
+<nav class="sidebar-nav" [class.sidebar-nav--collapsed]="uiStore.sidebarCollapsed()">
+  @for (item of navItems; track item.path) {
+    <a
+      class="sidebar-nav__item"
+      [routerLink]="item.path"
+      routerLinkActive="sidebar-nav__item--active"
+    >
+      <mat-icon>{{ item.icon }}</mat-icon>
+      @if (!uiStore.sidebarCollapsed()) {
+        <span>{{ item.label }}</span>
+      }
+    </a>
+  }
+</nav>

@@ -1,0 +1,16 @@
+<span class="team-badge" [class]="'team-badge--' + size()">
+  <span
+    class="team-badge__swatch"
+    [style.background]="team().colorHex"
+    [style.box-shadow]="'0 0 12px ' + team().colorHex + '66'"
+  >
+    @if (team().logoUrl) {
+      <img [src]="team().logoUrl" [alt]="team().name" />
+    } @else {
+      <span class="team-badge__initial">{{ initial() }}</span>
+    }
+  </span>
+  @if (showName()) {
+    <span class="team-badge__name">{{ team().name }}</span>
+  }
+</span>

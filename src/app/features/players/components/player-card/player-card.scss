@@ -1,0 +1,38 @@
+.player-card {
+  display: flex;
+  align-items: center;
+  gap: var(--app-space-3);
+  padding: var(--app-space-3);
+  text-decoration: none;
+  color: inherit;
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__name {
+    font-weight: 600;
+    color: var(--app-text-primary);
+  }
+
+  &__badge {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: var(--app-space-1) var(--app-space-2);
+    border-radius: var(--app-radius-pill);
+
+    &--unsold {
+      background: rgba(255, 77, 109, 0.14);
+      color: var(--app-danger);
+    }
+
+    &--live {
+      background: rgba(46, 94, 255, 0.14);
+      color: var(--app-blue-400);
+    }
+  }
+}

@@ -1,0 +1,63 @@
+@if (player(); as p) {
+  <div class="player-detail">
+    <a routerLink="/players" class="player-detail__back">
+      <mat-icon>arrow_back</mat-icon>
+      Back to Players
+    </a>
+
+    <div class="player-detail__header" appGlassPanel>
+      <app-player-avatar [player]="p" [sizePx]="120" />
+      <div class="player-detail__info">
+        <span class="app-heading-xl">{{ p.name }}</span>
+        <div class="player-detail__meta">
+          <span class="player-detail__chip">{{ roleLabels[p.role] }}</span>
+          <span class="player-detail__chip">{{ genderLabels[p.gender] }}</span>
+          <span class="player-detail__chip">#{{ p.serialNo }}</span>
+        </div>
+        <div class="player-detail__stars">
+          @for (s of stars; track s) {
+            <mat-icon [class.player-detail__star--filled]="s <= p.skillRating">star</mat-icon>
+          }
+        </div>
+      </div>
+      <app-credit-pill [amount]="p.basePrice" label="Base Price" variant="blue" />
+    </div>
+
+    <div class="player-detail__status" appGlassPanel>
+      @switch (p.status) {
+        @case (PlayerStatus.Sold) {
+          <mat-icon class="player-detail__status-icon player-detail__status-icon--sold">check_circle</mat-icon>
+          <span>Sold to</span>
+          @if (soldToTeam(); as team) {
+            <app-team-badge [team]="team" size="sm" />
+          }
+          <app-credit-pill [amount]="p.soldPrice ?? 0" variant="gold" />
+        }
+        @case (PlayerStatus.Unsold) {
+          <mat-icon class="player-detail__status-icon player-detail__status-icon--unsold">cancel</mat-icon>
+          <span>Went Unsold</span>
+        }
+        @case (PlayerStatus.InAuction) {
+          <mat-icon class="player-detail__status-icon player-detail__status-icon--live">gavel</mat-icon>
+          <span>Currently on the block</span>
+        }
+        @default {
+          <mat-icon class="player-detail__status-icon">hourglass_empty</mat-icon>
+          <span>Waiting in the pool</span>
+        }
+      }
+    </div>
+
+    @if (liveBidTrail().length > 0) {
+      <div class="player-detail__trail" appGlassPanel>
+        <span class="app-heading-md">Live Bid Trail</span>
+        @for (bid of liveBidTrail(); track bid.id) {
+          <div class="player-detail__trail-row">
+            <span>{{ teamName(bid.teamId) }}</span>
+            <app-credit-pill [amount]="bid.amount" variant="gold" />
+          </div>
+        }
+      </div>
+    }
+  </div>
+}

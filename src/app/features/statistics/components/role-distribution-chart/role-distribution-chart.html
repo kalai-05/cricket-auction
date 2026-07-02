@@ -1,0 +1,11 @@
+<div class="role-distribution">
+  @for (stat of stats(); track stat.label) {
+    <div class="role-distribution__row">
+      <span class="role-distribution__label">{{ stat.label }}</span>
+      <div class="role-distribution__track">
+        <div class="role-distribution__bar" [style.width.%]="percentOf(stat.count)"></div>
+      </div>
+      <span class="role-distribution__count">{{ stat.count }}</span>
+    </div>
+  }
+</div>

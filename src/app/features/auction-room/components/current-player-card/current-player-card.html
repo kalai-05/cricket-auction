@@ -1,0 +1,34 @@
+@if (player(); as p) {
+  <div class="current-player" appGlassPanel appGlassGlow>
+    @if (p.isMarquee) {
+      <span class="current-player__marquee">
+        <mat-icon>star</mat-icon>
+        Marquee Player
+      </span>
+    }
+
+    <app-player-avatar [player]="p" [sizePx]="140" />
+
+    <h2 class="current-player__name app-heading-xl">{{ p.name }}</h2>
+
+    <div class="current-player__meta">
+      <span class="current-player__chip current-player__chip--category">{{ categoryLabels[p.category] }}</span>
+      <span class="current-player__chip">{{ roleLabels[p.role] }}</span>
+      <span class="current-player__chip">{{ genderLabels[p.gender] }}</span>
+      <span class="current-player__chip">#{{ p.serialNo }}</span>
+    </div>
+
+    <div class="current-player__stars">
+      @for (s of stars; track s) {
+        <mat-icon [class.current-player__star--filled]="s <= p.skillRating">star</mat-icon>
+      }
+    </div>
+
+    <app-credit-pill [amount]="p.basePrice" label="Base Price" variant="blue" />
+  </div>
+} @else {
+  <div class="current-player current-player--empty" appGlassPanel>
+    <mat-icon class="current-player__empty-icon">hourglass_empty</mat-icon>
+    <span class="app-heading-md">No player on the block right now</span>
+  </div>
+}

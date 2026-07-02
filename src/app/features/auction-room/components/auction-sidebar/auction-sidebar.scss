@@ -1,0 +1,67 @@
+.auction-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--app-space-4);
+
+  &__panel {
+    display: flex;
+    flex-direction: column;
+    gap: var(--app-space-3);
+    padding: var(--app-space-4);
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--app-space-2);
+  }
+
+  &__row {
+    display: flex;
+    align-items: center;
+    gap: var(--app-space-2);
+  }
+
+  &__pos {
+    width: 18px;
+    font-size: 0.75rem;
+    color: var(--app-text-muted);
+  }
+
+  &__name {
+    font-weight: 600;
+    color: var(--app-text-primary);
+    font-size: 0.9rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__result-icon {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+    color: var(--app-success);
+    flex-shrink: 0;
+
+    &--unsold {
+      color: var(--app-danger);
+    }
+  }
+
+  &__result-info {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  &__detail {
+    font-size: 0.75rem;
+    color: var(--app-text-muted);
+  }
+
+  &__empty {
+    font-size: 0.85rem;
+    color: var(--app-text-muted);
+  }
+}

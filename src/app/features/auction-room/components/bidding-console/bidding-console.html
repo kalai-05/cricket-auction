@@ -1,0 +1,94 @@
+<div class="bidding-console" appGlassPanel>
+  @if (auctionFacade.phase() === AuctionPhase.NotStarted) {
+    <div class="bidding-console__start">
+      <button mat-flat-button color="primary" (click)="start()">
+        <mat-icon>play_arrow</mat-icon>
+        Start Auction
+      </button>
+    </div>
+  } @else if (auctionFacade.phase() === AuctionPhase.Completed) {
+    <div class="bidding-console__complete">
+      <mat-icon>emoji_events</mat-icon>
+      <span class="app-heading-md">Auction Complete</span>
+    </div>
+  } @else {
+    <div class="bidding-console__bid-row">
+      <div class="bidding-console__current">
+        <span class="app-label">Current Bid</span>
+        <app-credit-pill [amount]="auctionFacade.currentBidAmount()" variant="gold" />
+        @if (auctionFacade.currentBiddingTeam(); as team) {
+          <app-team-badge [team]="team" size="sm" />
+        }
+      </div>
+      <app-bid-countdown />
+      <div class="bidding-console__next">
+        <span class="app-label">Next Bid</span>
+        <app-credit-pill [amount]="auctionFacade.nextBidAmount()" variant="blue" />
+      </div>
+    </div>
+
+    <div class="bidding-console__increments">
+      <span class="app-label">Raise By</span>
+      @for (step of auctionFacade.bidIncrements(); track step) {
+        <button
+          class="bidding-console__increment-btn"
+          [class.bidding-console__increment-btn--active]="auctionFacade.selectedIncrement() === step"
+          (click)="setIncrement(step)"
+        >
+          +{{ step }}
+        </button>
+      }
+    </div>
+
+    <div class="bidding-console__teams">
+      @for (team of teamFacade.teams(); track team.id) {
+        <button
+          class="bidding-console__team-btn"
+          [class.bidding-console__team-btn--leading]="auctionFacade.currentBiddingTeam()?.id === team.id"
+          [disabled]="!auctionFacade.eligibleTeamIds().has(team.id)"
+          (click)="placeBid(team.id)"
+        >
+          <app-team-badge [team]="team" size="sm" [showName]="true" />
+          <span class="bidding-console__team-purse">{{ teamFacade.rosterStats()[team.id]?.remainingPurse }} Cr left</span>
+        </button>
+      }
+    </div>
+
+    <div class="bidding-console__actions">
+      <button mat-stroked-button (click)="pauseOrResume()">
+        <mat-icon>{{ auctionFacade.phase() === AuctionPhase.Paused ? 'play_arrow' : 'pause' }}</mat-icon>
+        {{ auctionFacade.phase() === AuctionPhase.Paused ? 'Resume' : 'Pause' }}
+      </button>
+      <button mat-stroked-button [disabled]="!auctionFacade.canUndo()" (click)="undo()">
+        <mat-icon>undo</mat-icon>
+        Undo
+      </button>
+      <button mat-stroked-button (click)="resetBid()" [disabled]="!auctionFacade.canMarkUnsold()">
+        <mat-icon>restart_alt</mat-icon>
+        Reset Bid
+      </button>
+      <button mat-stroked-button (click)="skip()" [disabled]="!auctionFacade.canMarkUnsold()">
+        <mat-icon>skip_next</mat-icon>
+        Skip
+      </button>
+      <button
+        mat-stroked-button
+        color="warn"
+        [disabled]="!auctionFacade.canMarkUnsold()"
+        (click)="markUnsold()"
+      >
+        <mat-icon>close</mat-icon>
+        Unsold
+      </button>
+      <button
+        mat-flat-button
+        color="primary"
+        [disabled]="!auctionFacade.canMarkSold()"
+        (click)="markSold()"
+      >
+        <mat-icon>gavel</mat-icon>
+        Sold!
+      </button>
+    </div>
+  }
+</div>
